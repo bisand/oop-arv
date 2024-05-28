@@ -1,53 +1,45 @@
 # Objektorientert Programmering
 
-## Grunnleggende
+## Arv
 
-### Klasser og objekter
+Arv (engelsk: Inheritance) er et grunnleggende prinsipp i objektorientert programmering (OOP) som muliggjør at en klasse kan arve egenskaper (som metoder og variabler) fra en annen klasse.
+Dette konseptet er sentralt for å skape en hierarkisk klassifisering av klasser, og det bidrar til kodegjenbruk og en mer organisert og forståelig struktur i programmer.
 
-Klasser er en måte å definere objekter på. Objekter er en instans av en klasse. En klasse kan ha attributter og metoder. Attributter er egenskaper til objektet, mens metoder er funksjoner som kan utføres på objektet.
-
-Eksempel på en klasse:
-
+I dette eksemplet arver både Hund og Katt fra klassen Dyr. Metoden snakk() er definert i Dyr og deretter overstyrret i både Hund og Katt for å gi en spesifikk implementasjon for hver underklasse. Arv muliggjør en strukturert og modulær tilnærming til programmeringsproblemer, som gjør det lettere å forstå, vedlikeholde og utvide koden.   
+___
+`Eksempel: Person -> Student, Person -> Teacher `
 ```python
 class Person:
-    # Klasss-variabel
-    count = 0
-    persons = []
-
-    def __init__(self, name, age):
-        self.name = name
+    def __init__(self, first_name: str, last_name: str, age: int, gender: str):
+        self.first_name = first_name
+        self.last_name = last_name
         self.age = age
-        # Øk telleren for hver gang en ny person blir laget
-        Person.count += 1
-        Person.persons.append(self)
+        self.gender = gender
 
-    def __str__(self):
-        return f"Name: {self.name}, Age: {self.age}"
+class Student(Person):
+    def __init__(self, first_name: str, last_name: str, age: int, gender: str, student_id: str, major: str):
+        super().__init__(first_name, last_name, age, gender)
+        self.student_id = student_id
+        self.major = major
 
-    def __repr__(self):
-        return f"Person({self.name}, {self.age})"
+    def vis_info(self):
+        return f"Student: {self.first_name} {self.last_name}, Alder: {self.age}, Kjønn: {self.gender}, ID: {self.student_id}, Studieretning: {self.major}"
 
-    def __del__(self):
-        # Fjern personen fra listen når objektet blir slettet
-        Person.count -= 1
-        Person.persons.remove(self)
+class Teacher(Person):
+    def __init__(self, first_name: str, last_name: str, age: int, gender: str, employee_id: str, department: str):
+        super().__init__(first_name, last_name, age, gender)
+        self.employee_id = employee_id
+        self.department = department
 
-    def print_info(self):
-        print(f"Name: {self.name}, Age: {self.age}")
+    def vis_info(self):
+        return f"Lærer: {self.first_name} {self.last_name}, Alder: {self.age}, Kjønn: {self.gender}, ID: {self.employee_id}, Avdeling: {self.department}"
 
-    # Klasse-metode
-    @classmethod
-    def print_count(cls):
-        print(f"Total number of persons: {cls.count}")
+# Eksempel på bruk
+student = Student("Alice", "Larsen", 20, "Kvinne", "S12345", "Datavitenskap")
+teacher = Teacher("Bob", "Johansen", 45, "Mann", "T67890", "Matematikk")
 
-
-person1 = Person("Alice", 30)
-person2 = Person("Bob", 25)
-
-person1.print_info()
-person2.print_info()
-
-Person.print_count()
+print(student.vis_info())
+print(teacher.vis_info())
 
 ```
 
@@ -55,4 +47,4 @@ Person.print_count()
 
 Oppgaver nedenfor er ment for å gi deg en forståelse av hvordan klasser og objekter fungerer. Disse skal leveres innen neste forelesning. Arbeidskravet vil bestå av å få godkjent minst 2 av oppgavene. Det er ønskelig at dere leverer så mange som mulig, men det er ikke et krav.
 
-Klikk [her](oppgaver/oppgaver.md) for å se oppgaver ([PDF](oppgaver/oppgaver.pdf)).
+Klikk [her](oppgaver/oppgaver.md) for å se oppgaver.
