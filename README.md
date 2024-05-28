@@ -5,7 +5,7 @@
 Arv (engelsk: Inheritance) er et grunnleggende prinsipp i objektorientert programmering (OOP) som muliggjør at en klasse kan arve egenskaper (som metoder og variabler) fra en annen klasse.
 Dette konseptet er sentralt for å skape en hierarkisk klassifisering av klasser, og det bidrar til kodegjenbruk og en mer organisert og forståelig struktur i programmer.
 
-I dette eksemplet arver både Hund og Katt fra klassen Dyr. Metoden snakk() er definert i Dyr og deretter overstyrret i både Hund og Katt for å gi en spesifikk implementasjon for hver underklasse. Arv muliggjør en strukturert og modulær tilnærming til programmeringsproblemer, som gjør det lettere å forstå, vedlikeholde og utvide koden.   
+### Praktisk eksempel på bruk av arv
 ___
 `Eksempel: Person -> Student, Person -> Teacher `
 ```python
